@@ -1,0 +1,13 @@
+{
+  "name":"kronos",
+  "version":"0.0.1",
+  "author":"Alejandro Morales",
+  "dependencies":{
+    "commander":"0.5.x",
+    "mkdirp":"0.2.x"
+  },
+  "engines": { 
+    "node": ">= 0.4.x < 0.7.0" 
+  },
+  "keywords": ["command", "project", "maker", "stdin"]
+}
