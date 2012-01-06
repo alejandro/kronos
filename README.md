@@ -1,6 +1,6 @@
 # Kronos
 
-A dead simple project scheme maker to initialize project with ease in node.js
+A dead simple project scheme maker to initialize project in node.js
 
 ## Installation
 
@@ -9,6 +9,12 @@ A dead simple project scheme maker to initialize project with ease in node.js
 Then: 
 
     $ kronos PROJECTNAME
+    $ cd PROJECTNAME
+    $ node index
+
+Go to [localhost:8000](http://127.0.0.1:8000) and it should respond 
+
+    " I'm PROJECTNAME and you"
 
 ## Usage:
 
