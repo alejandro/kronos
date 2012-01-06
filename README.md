@@ -61,6 +61,17 @@ By default a git repo it's been set. If you pass `g` as params with `e` only the
 The initial commit looks like this:
 
     * 46180b9 2012-01-06 | [kronos] Initial Commit (HEAD, master) [alejandromg]
+## Tests
+
+    > npm install kronos tap
+    > node test/test
+
+    // Should Return this
+    1..49
+    # tests 49
+    # pass  49
+
+    # ok
 
 ## Contributors
 
