@@ -1,6 +1,6 @@
 # Kronos
 
-A dead simple scheme maker to initialize project with ease in node.js
+A dead simple project scheme maker to initialize project with ease in node.js
 
 ## Installation
 
