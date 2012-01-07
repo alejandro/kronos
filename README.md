@@ -26,7 +26,8 @@ Go to [localhost:8000](http://127.0.0.1:8000) and it should respond
         -V, --version  output the version number
         -e, --empty    empty project just the squeleton without git init or files
         -g, --git      Use git for initiliaze project
-        -f, --full     Default config setup git project with squeleton and everything
+        -a, --all      Default config setup git project with squeleton and everything
+        -f, --force    Force the operation, deletes dir that already exists
 
 ## Squeleton
 
