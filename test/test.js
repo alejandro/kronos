@@ -14,33 +14,7 @@ for (var i = 0; i < 25; i++) {
 
 
 test('create and empty project', function (t) {    
-    exec(['kronos -e test'], function(err){
-        t.ifError(err, 'should not be error');
-         fs.stat('./test', function (er, stat) {
-            t.ifError(er, 'should exist');
-            t.ok(stat && stat.isDirectory(), 'should be directory');
-        });
-        fs.readdir('./test/', function(er,stat){
-            t.ifError(er, 'should read a dir')
-            t.equal(stat.length, 8, 'should have 8 elements inside')
-        });
-        fs.readdir('./test/lib', function(er,stat){
-            t.ifError(er, 'should read a dir')
-            t.equal(stat.length,1, 'should have one element inside')
-        });
-        fs.readdir('./test/bin',function(er,stat){
-           t.ifError(er, 'Should be a dir and have files inside');
-           t.equal(stat.length, 1, 'should have one element inside')
-           exec(['rm -rf test'], function(err){
-                t.ifError(err, 'Should erase the test directory')
-                t.end();
-           })
-        });
-    });
-});
-
-test('create and empty project with git configuration', function (t) {
-    exec(['kronos -eg test1'], function(err){
+    exec(['kronos -e test1'], function(err){
         t.ifError(err, 'should not be error');
          fs.stat('./test1', function (er, stat) {
             t.ifError(er, 'should exist');
@@ -48,28 +22,25 @@ test('create and empty project with git configuration', function (t) {
         });
         fs.readdir('./test1/', function(er,stat){
             t.ifError(er, 'should read a dir')
-            t.equal(stat.length, 9, 'should have 8 elements inside')
+            t.equal(stat.length, 8, 'should have 8 elements inside')
         });
         fs.readdir('./test1/lib', function(er,stat){
             t.ifError(er, 'should read a dir')
             t.equal(stat.length,1, 'should have one element inside')
         });
-        fs.readdir('./test1/.git', function(er,stat){
-            t.ifError(er, 'should read a dir')
-            t.equal(stat.length,11, 'should have elements inside')
-        });
         fs.readdir('./test1/bin',function(er,stat){
            t.ifError(er, 'Should be a dir and have files inside');
            t.equal(stat.length, 1, 'should have one element inside')
            exec(['rm -rf test1'], function(err){
-                t.ifError(err, 'Should erase the test directory')
+                t.ifError(err, 'Should erase the test1 directory')
                 t.end();
            })
         });
     });
 });
-test('create a default project', function (t) {
-    exec(['kronos test2'], function(err){
+
+test('create and empty project with git configuration', function (t) {
+    exec(['kronos -eg test2'], function(err){
         t.ifError(err, 'should not be error');
          fs.stat('./test2', function (er, stat) {
             t.ifError(er, 'should exist');
@@ -90,33 +61,62 @@ test('create a default project', function (t) {
         fs.readdir('./test2/bin',function(er,stat){
            t.ifError(er, 'Should be a dir and have files inside');
            t.equal(stat.length, 1, 'should have one element inside')
+           exec(['rm -rf test2'], function(err){
+                t.ifError(err, 'Should erase the test2 directory')
+                t.end();
+           })
         });
-        fs.readFile('./test2/index.js','utf8', function(err,file){
+    });
+});
+test('create a default project', function (t) {
+    exec(['kronos test3'], function(err){
+        t.ifError(err, 'should not be error');
+         fs.stat('./test3', function (er, stat) {
+            t.ifError(er, 'should exist');
+            t.ok(stat && stat.isDirectory(), 'should be directory');
+        });
+        fs.readdir('./test3/', function(er,stat){
+            t.ifError(er, 'should read a dir')
+            t.equal(stat.length, 9, 'should have 8 elements inside')
+        });
+        fs.readdir('./test3/lib', function(er,stat){
+            t.ifError(er, 'should read a dir')
+            t.equal(stat.length,1, 'should have one element inside')
+        });
+        fs.readdir('./test3/.git', function(er,stat){
+            t.ifError(er, 'should read a dir')
+            t.equal(stat.length,11, 'should have elements inside')
+        });
+        fs.readdir('./test3/bin',function(er,stat){
+           t.ifError(er, 'Should be a dir and have files inside');
+           t.equal(stat.length, 1, 'should have one element inside')
+        });
+        fs.readFile('./test3/index.js','utf8', function(err,file){
            t.ifError(err, 'should read index.js');
            t.equal(file.split('\n').length, 13, 'should have 13 lines');
            t.equal(file.length, 202, 'should have 202    chars');
         });
-        fs.readFile('./test2/README.md','utf8', function(err,file){
+        fs.readFile('./test3/README.md','utf8', function(err,file){
            t.ifError(err, 'should read README.md');
            t.equal(file.split('\n').length, 9, 'should have 9 lines');
            t.equal(file.length, 129, 'should have 129 chars');
         });
-        fs.readFile('./test2/package.json','utf8', function(err,file){
+        fs.readFile('./test3/package.json','utf8', function(err,file){
            t.ifError(err, 'should read package.json');
            t.equal(file.split('\n').length, 7, 'should have 7 lines');
            t.equal(file.length, 131, 'should have 131 chars');
         });
-        fs.readFile('./test2/bin/test2','utf8', function(err,file){
-           t.ifError(err, 'should read ./bin/test2');
+        fs.readFile('./test3/bin/test3','utf8', function(err,file){
+           t.ifError(err, 'should read ./bin/test3');
            t.equal(file.split('\n').length,12, 'should have 12 lines');
            t.equal(file.length, 164, 'should have 164 chars');
         });
-        fs.readFile('./test2/lib/test2.js','utf8', function(err,file){
-           t.ifError(err, 'should read lib/test2.js');
+        fs.readFile('./test3/lib/test3.js','utf8', function(err,file){
+           t.ifError(err, 'should read lib/test3.js');
            t.equal(file.split('\n').length, 25, 'should have 25 lines');
            t.equal(file.length, 418, 'should have 418 chars');
-           exec(['rm -rf test2'], function(err){
-                t.ifError(err, 'Should erase the test2 directory')
+           exec(['rm -rf test3'], function(err){
+                t.ifError(err, 'Should erase the test3 directory')
                 t.end();
            })
         });

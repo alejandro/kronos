@@ -1,6 +1,6 @@
 {
   "name":"kronos",
-  "version":"0.0.1",
+  "version":"0.0.2",
   "description":"A dead simple scheme maker to initialize and setup your new project",
   "author":"Alejandro Morales",
   "preferGlobal": "true",
@@ -18,7 +18,7 @@
   },
   "devDependencies":{
     "tap":"0.1.4"
-  }
+  },
   "engines": { 
     "node": ">= 0.4.x < 0.7.0" 
   },
